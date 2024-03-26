@@ -6,11 +6,13 @@ import Home from './components/Home/Home'
 import BookDetails from './components/BookDetails/BookDetails.jsx'
 import Root from './components/Root/Root.jsx'
 import ListedBooks from './components/ListedBooks/ListedBooks.jsx'
+import PagesToRead from './components/PagesToRead/PagesToRead.jsx'
+import Error from './components/Error/Error.jsx'
 
 let router=createBrowserRouter([
   {
     path:'/',
-    // element: <Home></Home>,
+    errorElement: <Error></Error>,
     element: <Root></Root>,
     children:[
       {
@@ -28,6 +30,11 @@ let router=createBrowserRouter([
         path:'/book/:id',
         element: <BookDetails></BookDetails>,
         loader:()=> fetch('/books.json')
+      },
+      {
+        path:'/pages',
+        element: <PagesToRead></PagesToRead>,
+        loader:()=>fetch('/books.json')
       }
     ]
   }

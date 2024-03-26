@@ -2,7 +2,7 @@
 // import { FaFileContract, FaPager } from 'react-icons/fa6';
 import { useEffect, useRef, useState } from "react";
 import { getLocalStorage, go, saveItem } from '../Utilities/utility';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { IoPeopleOutline } from "react-icons/io5";
 import { LuFileBarChart } from "react-icons/lu";
 import { IoLocationOutline } from "react-icons/io5";
@@ -197,8 +197,9 @@ const ListedBooks = () => {
                                             <div className='mt-2 flex gap-3' >
                                                 <p className='rounded-full py-1 px-3 text-[#328EFF] font-semibold bg-[#96afce]'>Category: {value.category}</p>
                                                 <p className='rounded-full py-1 px-3 text-[#FFAC33] font-semibold bg-[#e2ccab9f]'>Rating: {value.rating}</p>
-
-                                                <button className='bg-[#23BE0A] text-white font-semibold rounded-full py-2 px-3'>view details</button>
+                                                    
+                                                <Link to={`/book/${value.bookId}`}> <button className='bg-[#23BE0A] text-white font-semibold rounded-full py-2 px-3'>view details</button></Link>    
+                                               
                                             </div>
 
 
