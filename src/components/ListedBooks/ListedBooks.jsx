@@ -1,19 +1,26 @@
 
 // import { FaFileContract, FaPager } from 'react-icons/fa6';
 import { useEffect, useRef, useState } from "react";
-import { getLocalStorage } from '../Utilities/utility';
+import { getLocalStorage, go, saveItem } from '../Utilities/utility';
 import { useLoaderData } from 'react-router-dom';
 import { IoPeopleOutline } from "react-icons/io5";
 import { LuFileBarChart } from "react-icons/lu";
 import { IoLocationOutline } from "react-icons/io5";
 import { wishgetLocalStorage } from '../Utilities/wishlist';
-
+import { FaAngleDown } from "react-icons/fa";
 
 
 const ListedBooks = () => {
+    let readSection = useRef()
+    let wishlist = useRef()
+    let btn1 = useRef()
+    let btn2 = useRef()
     let book = useLoaderData()
-    let [perBook, setPerBook] = useState([])
+    let [readperBook, setreadPerBook] = useState([])
     let [wishPerBook, setWishPerBook] = useState([])
+
+    let [order,setOrder]=useState(false)
+
 
 
     useEffect(() => {
@@ -23,13 +30,13 @@ const ListedBooks = () => {
         for (const key of items) {
 
             let perBook = book.find(item => item.bookId == key)
-            console.log(perBook);
+            // console.log(perBook);
             if (perBook) {
                 newArray.push(perBook)
             }
 
         }
-        setPerBook(newArray)
+        setreadPerBook(newArray)
 
     }, [book])
 
@@ -39,24 +46,53 @@ const ListedBooks = () => {
         let newArray = []
         for (const key of items) {
             let perBook = book.find(item => item.bookId == key)
-            console.log(perBook);
+            // console.log(perBook);
             if (perBook) {
                 newArray.push(perBook)
             }
         }
         setWishPerBook(newArray)
-    }, [wishPerBook, book])
+    }, [book])
 
     // console.log(perBook);
 
+    // let r=[]
+
+    function pageHandled() {
+
+        // useEffect(()=>{},[])
+     
+        // if (!wishlist.current.classList.contains('hidden')) {
+
+        //   let ree= [...wishPerBook].sort((a,b)=> {
+        //         return b.totalPages - a.totalPages
+        //     })
+        //     setreadPerBook(ree)
+        // //    console.log(wishPerBook);
+        // // r.push(wishPerBook)
+        // // console.log(r);
+        // }
+        // else{
+ 
+        //     readperBook.sort((a,b)=>{
+        //         return a.totalPages - b.totalPages
+        //     })
+        //     // setreadPerBook(s)
+        //     // saveItem()
+        // //    let result= s.map(value=> value.bookId)
+        // //     go(result)
+            
+        // //     console.log(s);
+        // }
+        
+    }
+
+    console.log(readperBook);
 
 
 
 
-    let readSection = useRef()
-    let wishlist = useRef()
-    let btn1 = useRef()
-    let btn2 = useRef()
+ 
 
     function button1() {
         console.log(btn1.current);
@@ -79,16 +115,29 @@ const ListedBooks = () => {
     return (
         <section id='main-section' className="max-w-6xl mx-auto">
 
-            <div id="Book-title" className="text-center">
+            <div id="Book-title" className="text-center mb-[14%]">
                 <h2 className="font-bold text-2xl  mt-7 p-5 bg-gray-100 rounded-xl">Books</h2>
-                <button className="bg-[#23BE0A] mt-4 px-7 py-2 text-white font-bold rounded-xl ">Sort By</button>
+                <details className="dropdown">
+                    <summary className="m-1 btn">
+                        <div className="flex items-center">
+                            <p>sort by </p>
+                        <FaAngleDown />
+                        </div>
+                         </summary>
+                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                        <li><a>sort by</a></li>
+                        <li ><a>rating</a></li>
+                        <li onClick={pageHandled}><a>Number of pages</a></li>
+                        <li><a>Publish of year</a></li>
+                    </ul>
+                </details>
             </div>
 
 
             {/* button */}
 
 
-            <div className='flex'>
+            <div className='flex '>
 
                 <div className='flex items-end'>
                     <button onClick={button1} ref={btn1} className='border-t-2 border-l-2 border-r-2 px-4 py-2 w-[140px]'>Read Books</button>
@@ -110,10 +159,10 @@ const ListedBooks = () => {
                 <div id="read" ref={readSection} className='mt-6'>
 
                     {
-                        perBook.map((value, index) => {
+                        readperBook.map((value, index) => {
 
                             return (
-                                <div key={index} className='border-2 rounded-2xl mt-6'>
+                                <div key={value.bookId} className='border-2 rounded-2xl mt-6'>
                                     <div className='flex items-center gap-4 p-3'>
                                         <div className='bg-gray-100 rounded-xl'>
                                             <img className='p-4' src={value.image} alt="" />
@@ -124,7 +173,7 @@ const ListedBooks = () => {
                                             <p>By : {value.author}</p>
                                             <div id='tags' className='flex gap-6'>
                                                 {value.tags.map(tag => <p key={''} className="bg-[#cae4c6] font-semibold py-1 px-2 rounded-full text-[#60c960]">#{tag}</p>)}
-                                
+
                                                 <div className='flex items-center gap-1'>
                                                     <IoLocationOutline />
                                                     <p>Year of Publishing: {value.yearOfPublishing} </p>
@@ -138,7 +187,7 @@ const ListedBooks = () => {
                                                     <span>Publisher: {value.publisher}</span>
                                                 </div>
                                                 <div className='flex items-center gap-1'>
-                                                
+
                                                     <LuFileBarChart />
                                                     <span>Pages: {value.totalPages}</span>
                                                 </div>
@@ -179,59 +228,59 @@ const ListedBooks = () => {
                 <div id='wishlist' ref={wishlist} className=' mt-6 hidden'>
 
                     {
-                    wishPerBook.map((value, index) => {
-                        return (
-                            <div key={index} className='border-2 rounded-2xl mt-6'>
-                            <div className='flex items-center gap-4 p-3'>
-                                <div className='bg-gray-100 rounded-xl'>
-                                    <img className='p-4' src={value.image} alt="" />
+                        wishPerBook.map((value, index) => {
+                            return (
+                                <div key={index} className='border-2 rounded-2xl mt-6'>
+                                    <div className='flex items-center gap-4 p-3'>
+                                        <div className='bg-gray-100 rounded-xl'>
+                                            <img className='p-4' src={value.image} alt="" />
+                                        </div>
+
+
+
+                                        <div id='content-section' className='w-[80%] space-y-2'>
+                                            <h2 className='font-bold text-3xl'>{value.bookName}</h2>
+                                            <p>By : {value.author}</p>
+                                            <div id='tags' className='flex gap-6'>
+
+                                                {value.tags.map(tag => <p key={''} className="bg-[#cae4c6] font-semibold py-1 px-2 rounded-full text-[#60c960]">#{tag}</p>)}
+
+                                                <div className='flex items-center gap-1'>
+                                                    <IoLocationOutline />
+                                                    <p>Year of Publishing: {value.yearOfPublishing} </p>
+                                                </div>
+
+                                            </div>
+
+                                            <div className='flex gap-6'>
+                                                <div className='flex gap-1 items-center'>
+                                                    <IoPeopleOutline />
+                                                    <span>Publisher: {value.publisher}</span>
+                                                </div>
+                                                <div className='flex items-center gap-1'>
+                                                    {/* <FaFileContract></FaFileContract> */}
+                                                    <LuFileBarChart />
+                                                    <span>Pages: {value.totalPages}</span>
+                                                </div>
+                                            </div>
+                                            <div className="h-[1px] border-[1px] border-solid border-[#cfcdcdcc] w-full"></div>
+
+                                            <div className='mt-2 flex gap-3' >
+                                                <p className='rounded-full py-1 px-3 text-[#328EFF] font-semibold bg-[#96afce]'>Category: {value.category}</p>
+                                                <p className='rounded-full py-1 px-3 text-[#FFAC33] font-semibold bg-[#e2ccab9f]'>Rating: {value.rating}</p>
+
+                                                <button className='bg-[#23BE0A] text-white font-semibold rounded-full py-2 px-3'>view details</button>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+
                                 </div>
 
-
-
-                                <div id='content-section' className='w-[80%] space-y-2'>
-                                    <h2 className='font-bold text-3xl'>{value.bookName}</h2>
-                                    <p>By : {value.author}</p>
-                                    <div id='tags' className='flex gap-6'>
-
-                                        {value.tags.map(tag => <p key={''} className="bg-[#cae4c6] font-semibold py-1 px-2 rounded-full text-[#60c960]">#{tag}</p>)}
-                             
-                                        <div className='flex items-center gap-1'>
-                                            <IoLocationOutline />
-                                            <p>Year of Publishing: {value.yearOfPublishing} </p>
-                                        </div>
-
-                                    </div>
-
-                                    <div className='flex gap-6'>
-                                        <div className='flex gap-1 items-center'>
-                                            <IoPeopleOutline />
-                                            <span>Publisher: {value.publisher}</span>
-                                        </div>
-                                        <div className='flex items-center gap-1'>
-                                            {/* <FaFileContract></FaFileContract> */}
-                                            <LuFileBarChart />
-                                            <span>Pages: {value.totalPages}</span>
-                                        </div>
-                                    </div>
-                                    <div className="h-[1px] border-[1px] border-solid border-[#cfcdcdcc] w-full"></div>
-
-                                    <div className='mt-2 flex gap-3' >
-                                        <p className='rounded-full py-1 px-3 text-[#328EFF] font-semibold bg-[#96afce]'>Category: {value.category}</p>
-                                        <p className='rounded-full py-1 px-3 text-[#FFAC33] font-semibold bg-[#e2ccab9f]'>Rating: {value.rating}</p>
-
-                                        <button className='bg-[#23BE0A] text-white font-semibold rounded-full py-2 px-3'>view details</button>
-                                    </div>
-
-
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                           )
-                    })}
+                            )
+                        })}
 
 
                     {/*  */}

@@ -22,4 +22,12 @@ function getLocalStorage() {
     
  }
 
- export {getLocalStorage,saveItem}
+
+  function go(arr) {
+   let y=getLocalStorage()
+   y=[]
+   y=arr
+   localStorage.setItem('book',JSON.stringify(y))
+  }
+
+ export {getLocalStorage,saveItem,go}
