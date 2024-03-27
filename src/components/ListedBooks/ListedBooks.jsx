@@ -91,7 +91,7 @@ const ListedBooks = () => {
                     <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                         <li><a>sort by</a></li>
                         <li ><a>rating</a></li>
-                        <li onClick={pageHandled}><a>Number of pages</a></li>
+                        <li onClick={''}><a>Number of pages</a></li>
                         <li><a>Publish of year</a></li>
                     </ul>
                 </details>

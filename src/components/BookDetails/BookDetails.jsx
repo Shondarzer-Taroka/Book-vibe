@@ -52,27 +52,27 @@ const BookDetails = () => {
         <section className="max-w-6xl mx-auto">
 
             <div className="flex flex-col md:flex-col lg:flex-row justify-between gap-4 ">
-                <div className="bg-gray-100 w-full flex justify-center items-center rounded-2xl">
+                <div className="bg-gray-100 flex justify-center items-center rounded-2xl w-[40%]">
                     <img className="py-12" src={image} alt="" />
                 </div>
 
 
-                <div id="content" className="space-y-3">
+                <div id="content" className="space-y-3 w-[60%]">
                     <h3 className="text-2xl font-bold">{bookName}</h3>
-                    <p>By : {author}</p>
+                    <p className="text-xl">By : {author}</p>
                     <div className="h-[1px] border-[1px] border-solid border-[#cfcdcdcc]"></div>
 
-                    <h6 className="font-semibold">{category}</h6>
+                    <h6 className="text-xl">{category}</h6>
                     <div className="h-[1px] border-[1px] border-solid border-[#cfcdcdcc]"></div>
 
                     <div id="review" >
-                        <span className="font-semibold">Review:</span>
+                        <span className="font-bold">Review:</span>
                         <span>{review}</span>
                     </div>
 
                     <div>
                         <span className="font-bold">Tags:</span>
-                        {tags.map((value, index) => <span className="bg-[#cae4c6] font-semibold p-2 rounded-full text-[#60c960] ml-2" key={index}>{value}</span>)}
+                        {tags.map((value, index) => <span className="bg-[#f4fcf3] font-semibold p-2 rounded-full text-[#4dcb39] ml-2" key={index}>#{value}</span>)}
 
                     </div>
 
