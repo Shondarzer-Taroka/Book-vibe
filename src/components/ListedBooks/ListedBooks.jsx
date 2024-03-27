@@ -54,42 +54,6 @@ const ListedBooks = () => {
         setWishPerBook(newArray)
     }, [book])
 
-    // console.log(perBook);
-
-    // let r=[]
-
-    function pageHandled() {
-
-        // useEffect(()=>{},[])
-     
-        // if (!wishlist.current.classList.contains('hidden')) {
-
-        //   let ree= [...wishPerBook].sort((a,b)=> {
-        //         return b.totalPages - a.totalPages
-        //     })
-        //     setreadPerBook(ree)
-        // //    console.log(wishPerBook);
-        // // r.push(wishPerBook)
-        // // console.log(r);
-        // }
-        // else{
- 
-        //     readperBook.sort((a,b)=>{
-        //         return a.totalPages - b.totalPages
-        //     })
-        //     // setreadPerBook(s)
-        //     // saveItem()
-        // //    let result= s.map(value=> value.bookId)
-        // //     go(result)
-            
-        // //     console.log(s);
-        // }
-        
-    }
-
-    console.log(readperBook);
-
-
 
 
  
