@@ -15,11 +15,13 @@ const ListedBooks = () => {
     let wishlist = useRef()
     let btn1 = useRef()
     let btn2 = useRef()
+    let ul=useRef()
+    let [text, setText] = useState('')
     let book = useLoaderData()
     let [readperBook, setreadPerBook] = useState([])
     let [wishPerBook, setWishPerBook] = useState([])
 
-    let [order,setOrder]=useState(false)
+
 
 
 
@@ -54,9 +56,100 @@ const ListedBooks = () => {
         setWishPerBook(newArray)
     }, [book])
 
+    // console.log(perBook);
 
 
- 
+
+    function pageHandled(e) {
+        let t = e.target.innerText
+        setText(t)
+        //    console.log(t);
+        let sortArray = []
+        if (!wishlist.current.classList.contains('hidden')) {
+            sortArray = [...wishPerBook]
+            sortArray.sort((a, b) => {
+                return a.totalPages - b.totalPages
+            })
+            setWishPerBook(sortArray)
+        }
+        else {
+
+            sortArray = [...readperBook]
+            sortArray.sort((a, b) => {
+                return a.totalPages - b.totalPages
+            })
+            setreadPerBook(sortArray)
+
+        }
+    }
+
+    // console.log(text);
+
+
+
+
+    function yearHandled(e) {
+        let t = e.target.innerText
+        setText(t)
+        let k=e.target.parentElement.parentElement
+        k.classList.add('hidden')
+        console.log(k);
+        let sortArray = []
+        if (!wishlist.current.classList.contains('hidden')) {
+            sortArray = [...wishPerBook]
+            sortArray.sort((a, b) => {
+                return a.yearOfPublishing - b.yearOfPublishing
+            })
+            setWishPerBook(sortArray)
+        }
+        else {
+
+            sortArray = [...readperBook]
+            sortArray.sort((a, b) => {
+                return a.yearOfPublishing - b.yearOfPublishing
+            })
+            setreadPerBook(sortArray)
+
+        }
+    }
+
+
+
+
+    function ratingHandled(e) {
+        let t = e.target.innerText
+        setText(t)
+        let sortArray = []
+        if (!wishlist.current.classList.contains('hidden')) {
+            sortArray = [...wishPerBook]
+            sortArray.sort((a, b) => {
+                return a.rating - b.rating
+            })
+            setWishPerBook(sortArray)
+        }
+        else {
+
+            sortArray = [...readperBook]
+            sortArray.sort((a, b) => {
+                return a.rating - b.rating
+            })
+            setreadPerBook(sortArray)
+
+        }
+    }
+   
+    // document.getElementById('l').nextElementSibling
+   
+
+    function dropdownFunc(e) {
+        // console.log(e.target.nextElementSibling);
+        // ul.current.classList.remove('hidden')
+        ul.current.classList.remove('hidden');
+    }
+
+
+
+
 
     function button1() {
         console.log(btn1.current);
@@ -81,180 +174,194 @@ const ListedBooks = () => {
 
             <div id="Book-title" className="text-center mb-[14%]">
                 <h2 className="font-bold text-2xl  mt-7 p-5 bg-gray-100 rounded-xl">Books</h2>
-                <details className="dropdown">
-                    <summary className="m-1 btn">
-                        <div className="flex items-center">
-                            <p>sort by </p>
+                <details onClick={dropdownFunc} className="dropdown">
+                    <summary className="m-1 btn  bg-green-400">
+                        <div className="flex items-center ">
+                            <p>{text==''?'sort by': text}</p>
                         <FaAngleDown />
                         </div>
                          </summary>
-                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                    <ul ref={ul} className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                         <li><a>sort by</a></li>
-                        <li ><a>rating</a></li>
-                        <li onClick={''}><a>Number of pages</a></li>
-                        <li><a>Publish of year</a></li>
+                        <li onClick={ratingHandled}><a>rating</a></li>
+                        <li onClick={pageHandled}><a>Number of pages</a></li>
+                        <li onClick={yearHandled}><a>Publish of year</a></li>
                     </ul>
                 </details>
-            </div>
+
+                
+
+                {/* <form className="mt-8">
+                   
+                    <select name="cars" id="cars" className=" bg-green-400 p-4 font-semibold outline-none text-white border-none">
+                        <option className="bg-white text-black font-normal" value="sort by">sort by</option>
+                        <option onClick={ratingHandled} className="bg-white text-black font-normal" value="rating">rating</option>
+                        <option className="bg-white text-black font-normal" value="Number of pages">Number of pages</option>
+                        <option className="bg-white text-black font-normal" value="Publish of year">Publish of year</option>
+                    </select>
+                    
+                     
+                        </form> */}
+                    </div>
 
 
-            {/* button */}
+                        {/* button */}
 
 
-            <div className='flex '>
+                        <div className='flex '>
 
-                <div className='flex items-end'>
-                    <button onClick={button1} ref={btn1} className='border-t-2 border-l-2 border-r-2 px-4 py-2 w-[140px]'>Read Books</button>
-                    <button onClick={button2} ref={btn2} className='border-b-2 px-4 py-2 w-[140px]'>Wishlist Books</button>
-                </div>
+                            <div className='flex items-end'>
+                                <button onClick={button1} ref={btn1} className='border-t-2 border-l-2 border-r-2 px-4 py-2 w-[140px]'>Read Books</button>
+                                <button onClick={button2} ref={btn2} className='border-b-2 px-4 py-2 w-[140px]'>Wishlist Books</button>
+                            </div>
 
-                <div className="h-[42px] border-b-[2px] border-solid border-[#cfcdcdcc] w-full"></div>
+                            <div className="h-[42px] border-b-[2px] border-solid border-[#cfcdcdcc] w-full"></div>
 
-            </div>
+                        </div>
 
-            {/* button ends */}
+                        {/* button ends */}
 
 
 
-            <div id="read-wishlist-section" >
+                        <div id="read-wishlist-section" >
 
-                {/* read section starts */}
+                            {/* read section starts */}
 
-                <div id="read" ref={readSection} className='mt-6'>
+                            <div id="read" ref={readSection} className='mt-6'>
 
-                    {
-                        readperBook.map((value, index) => {
+                                {
+                                    readperBook.map((value, index) => {
 
-                            return (
-                                <div key={value.bookId} className='border-2 rounded-2xl mt-6'>
-                                    <div className='flex items-center gap-4 p-3'>
-                                        <div className='bg-gray-100 rounded-xl'>
-                                            <img className='p-4' src={value.image} alt="" />
-                                        </div>
+                                        return (
+                                            <div key={value.bookId} className='border-2 rounded-2xl mt-6'>
+                                                <div className='flex items-center gap-4 p-3'>
+                                                    <div className='bg-gray-100 rounded-xl'>
+                                                        <img className='p-4' src={value.image} alt="" />
+                                                    </div>
 
-                                        <div id='content-section' className='w-[80%] space-y-2'>
-                                            <h2 className='font-bold text-3xl'>{value.bookName}</h2>
-                                            <p>By : {value.author}</p>
-                                            <div id='tags' className='flex gap-6'>
-                                                {value.tags.map(tag => <p key={''} className="bg-[#cae4c6] font-semibold py-1 px-2 rounded-full text-[#60c960]">#{tag}</p>)}
+                                                    <div id='content-section' className='w-[80%] space-y-2'>
+                                                        <h2 className='font-bold text-3xl'>{value.bookName}</h2>
+                                                        <p>By : {value.author}</p>
+                                                        <div id='tags' className='flex gap-6'>
+                                                            {value.tags.map(tag => <p key={''} className="bg-[#cae4c6] font-semibold py-1 px-2 rounded-full text-[#60c960]">#{tag}</p>)}
 
-                                                <div className='flex items-center gap-1'>
-                                                    <IoLocationOutline />
-                                                    <p>Year of Publishing: {value.yearOfPublishing} </p>
+                                                            <div className='flex items-center gap-1'>
+                                                                <IoLocationOutline />
+                                                                <p>Year of Publishing: {value.yearOfPublishing} </p>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div className='flex gap-6'>
+                                                            <div className='flex gap-1 items-center'>
+                                                                <IoPeopleOutline />
+                                                                <span>Publisher: {value.publisher}</span>
+                                                            </div>
+                                                            <div className='flex items-center gap-1'>
+
+                                                                <LuFileBarChart />
+                                                                <span>Pages: {value.totalPages}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div className="h-[1px] border-[1px] border-solid border-[#cfcdcdcc] w-full"></div>
+
+                                                        <div className='mt-2 flex gap-3' >
+                                                            <p className='rounded-full py-1 px-3 text-[#328EFF] font-semibold bg-[#96afce]'>Category: {value.category}</p>
+                                                            <p className='rounded-full py-1 px-3 text-[#FFAC33] font-semibold bg-[#e2ccab9f]'>Rating: {value.rating}</p>
+
+                                                            <Link to={`/book/${value.bookId}`}> <button className='bg-[#23BE0A] text-white font-semibold rounded-full py-2 px-3'>view details</button></Link>
+
+                                                        </div>
+
+
+                                                    </div>
                                                 </div>
+
+
+                                            </div>)
+                                    })
+                                }
+
+                                {/* <section id="read-book"> */}
+                                {/* </section> */}
+
+                            </div>
+
+
+
+                            {/* read section ends */}
+
+
+
+
+
+                            {/* wishlist container starts */}
+
+                            <div id='wishlist' ref={wishlist} className=' mt-6 hidden'>
+
+                                {
+                                    wishPerBook.map((value, index) => {
+                                        return (
+                                            <div key={index + 1} className='border-2 rounded-2xl mt-6'>
+                                                <div className='flex items-center gap-4 p-3'>
+                                                    <div className='bg-gray-100 rounded-xl'>
+                                                        <img className='p-4' src={value.image} alt="" />
+                                                    </div>
+
+
+
+                                                    <div id='content-section' className='w-[80%] space-y-2'>
+                                                        <h2 className='font-bold text-3xl'>{value.bookName}</h2>
+                                                        <p>By : {value.author}</p>
+                                                        <div id='tags' className='flex gap-6'>
+
+                                                            {value.tags.map(tag => <p key={''} className="bg-[#cae4c6] font-semibold py-1 px-2 rounded-full text-[#60c960]">#{tag}</p>)}
+
+                                                            <div className='flex items-center gap-1'>
+                                                                <IoLocationOutline />
+                                                                <p>Year of Publishing: {value.yearOfPublishing} </p>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div className='flex gap-6'>
+                                                            <div className='flex gap-1 items-center'>
+                                                                <IoPeopleOutline />
+                                                                <span>Publisher: {value.publisher}</span>
+                                                            </div>
+                                                            <div className='flex items-center gap-1'>
+                                                                {/* <FaFileContract></FaFileContract> */}
+                                                                <LuFileBarChart />
+                                                                <span>Pages: {value.totalPages}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div className="h-[1px] border-[1px] border-solid border-[#cfcdcdcc] w-full"></div>
+
+                                                        <div className='mt-2 flex gap-3' >
+                                                            <p className='rounded-full py-1 px-3 text-[#328EFF] font-semibold bg-[#96afce]'>Category: {value.category}</p>
+                                                            <p className='rounded-full py-1 px-3 text-[#FFAC33] font-semibold bg-[#e2ccab9f]'>Rating: {value.rating}</p>
+
+                                                            <button className='bg-[#23BE0A] text-white font-semibold rounded-full py-2 px-3'>view details</button>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+
 
                                             </div>
 
-                                            <div className='flex gap-6'>
-                                                <div className='flex gap-1 items-center'>
-                                                    <IoPeopleOutline />
-                                                    <span>Publisher: {value.publisher}</span>
-                                                </div>
-                                                <div className='flex items-center gap-1'>
-
-                                                    <LuFileBarChart />
-                                                    <span>Pages: {value.totalPages}</span>
-                                                </div>
-                                            </div>
-                                            <div className="h-[1px] border-[1px] border-solid border-[#cfcdcdcc] w-full"></div>
-
-                                            <div className='mt-2 flex gap-3' >
-                                                <p className='rounded-full py-1 px-3 text-[#328EFF] font-semibold bg-[#96afce]'>Category: {value.category}</p>
-                                                <p className='rounded-full py-1 px-3 text-[#FFAC33] font-semibold bg-[#e2ccab9f]'>Rating: {value.rating}</p>
-                                                    
-                                                <Link to={`/book/${value.bookId}`}> <button className='bg-[#23BE0A] text-white font-semibold rounded-full py-2 px-3'>view details</button></Link>    
-                                               
-                                            </div>
+                                        )
+                                    })}
 
 
-                                        </div>
-                                    </div>
+                                {/*  */}
+                            </div>
 
+                        </div>
+                    </section>
 
-                                </div>)
-                        })
-                    }
-
-                    {/* <section id="read-book"> */}
-                    {/* </section> */}
-
-                </div>
-
-
-
-                {/* read section ends */}
-
-
-
-
-
-                {/* wishlist container starts */}
-
-                <div id='wishlist' ref={wishlist} className=' mt-6 hidden'>
-
-                    {
-                        wishPerBook.map((value, index) => {
-                            return (
-                                <div key={index} className='border-2 rounded-2xl mt-6'>
-                                    <div className='flex items-center gap-4 p-3'>
-                                        <div className='bg-gray-100 rounded-xl'>
-                                            <img className='p-4' src={value.image} alt="" />
-                                        </div>
-
-
-
-                                        <div id='content-section' className='w-[80%] space-y-2'>
-                                            <h2 className='font-bold text-3xl'>{value.bookName}</h2>
-                                            <p>By : {value.author}</p>
-                                            <div id='tags' className='flex gap-6'>
-
-                                                {value.tags.map(tag => <p key={''} className="bg-[#cae4c6] font-semibold py-1 px-2 rounded-full text-[#60c960]">#{tag}</p>)}
-
-                                                <div className='flex items-center gap-1'>
-                                                    <IoLocationOutline />
-                                                    <p>Year of Publishing: {value.yearOfPublishing} </p>
-                                                </div>
-
-                                            </div>
-
-                                            <div className='flex gap-6'>
-                                                <div className='flex gap-1 items-center'>
-                                                    <IoPeopleOutline />
-                                                    <span>Publisher: {value.publisher}</span>
-                                                </div>
-                                                <div className='flex items-center gap-1'>
-                                                    {/* <FaFileContract></FaFileContract> */}
-                                                    <LuFileBarChart />
-                                                    <span>Pages: {value.totalPages}</span>
-                                                </div>
-                                            </div>
-                                            <div className="h-[1px] border-[1px] border-solid border-[#cfcdcdcc] w-full"></div>
-
-                                            <div className='mt-2 flex gap-3' >
-                                                <p className='rounded-full py-1 px-3 text-[#328EFF] font-semibold bg-[#96afce]'>Category: {value.category}</p>
-                                                <p className='rounded-full py-1 px-3 text-[#FFAC33] font-semibold bg-[#e2ccab9f]'>Rating: {value.rating}</p>
-
-                                                <button className='bg-[#23BE0A] text-white font-semibold rounded-full py-2 px-3'>view details</button>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-
-
-                                </div>
-
-                            )
-                        })}
-
-
-                    {/*  */}
-                </div>
-
-            </div>
-        </section>
-
-    );
+                    );
 };
 
-export default ListedBooks;
+                    export default ListedBooks;
