@@ -28,16 +28,20 @@ const NavBar = () => {
     <a className="btn btn-ghost text-xl">Book Vibe</a>
   </div>
   <div className="navbar-center hidden lg:flex">
-     <ul className="menu menu-horizontal px-1">
-    {/* <NavLink>Home</NavLink>
-    <NavLink>Listed Books</NavLink>
-    <NavLink>Pages to Read</NavLink> */}
+     {/* <ul className="menu menu-horizontal px-1">
+
+
     <li><NavLink to={'/'}>Home</NavLink></li>
     <li><NavLink to={'/listed'}>Listed Books</NavLink></li>
     <li><NavLink to={'/pages'}>Pages to Read</NavLink></li> 
-    </ul>  
-    
-  
+
+    </ul>   */}
+    {/* <div className="menu menu-horizontal flex items-center gap-6 px-1"></div> */}
+    <div className="op menu menu-horizontal flex items-center gap-6 px-1">
+    <NavLink   to={'/'}>Home</NavLink>
+    <NavLink  to={'/listed'}>Listed Books</NavLink>
+    <NavLink  to={'/pages'}>Pages to Read</NavLink>
+     </div> 
 
    
   </div>

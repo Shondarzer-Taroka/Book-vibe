@@ -40,8 +40,9 @@ export default function PagesToRead() {
     console.log(bookItem);
       
   return (
+     <section className='max-w-6xl mx-auto'> 
     <BarChart
-      width={900}
+      width={1000}
       height={300}
       data={bookItem}
       margin={{
@@ -61,7 +62,7 @@ export default function PagesToRead() {
       </Bar>
       <Tooltip></Tooltip>
     </BarChart>
-  );
+    </section>);
 }
 
 // App.demoUrl = 'https://codesandbox.io/s/bar-chart-with-customized-shape-dusth';

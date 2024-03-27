@@ -1,3 +1,10 @@
-a.active{
-    background-color: transparent;
+.op .active{
+    background-color:transparent;
+    padding: 12px; 
+    border-radius: 12px ;
+    border: 2px solid #23BE0A;
+    /* height: 44px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

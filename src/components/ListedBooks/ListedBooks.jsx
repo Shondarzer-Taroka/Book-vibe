@@ -210,7 +210,7 @@ const ListedBooks = () => {
 
                         <div className='flex '>
 
-                            <div className='flex items-end'>
+                            <div className='flex  items-end'>
                                 <button onClick={button1} ref={btn1} className='border-t-2 border-l-2 border-r-2 px-4 py-2 w-[140px]'>Read Books</button>
                                 <button onClick={button2} ref={btn2} className='border-b-2 px-4 py-2 w-[140px]'>Wishlist Books</button>
                             </div>
@@ -234,23 +234,28 @@ const ListedBooks = () => {
 
                                         return (
                                             <div key={value.bookId} className='border-2 rounded-2xl mt-6'>
-                                                <div className='flex items-center gap-4 p-3'>
-                                                    <div className='bg-gray-100 rounded-xl'>
-                                                        <img className='p-4' src={value.image} alt="" />
+                                                <div className='flex flex-col md:flex-row items-center gap-4 p-3'>
+                                                    <div className='bg-gray-100 rounded-xl w-full md:w-max lg:w-auto'>
+                                                        <img className='p-4 w-[70%] md:w-auto' src={value.image} alt="" />
                                                     </div>
 
                                                     <div id='content-section' className='w-[80%] space-y-2'>
                                                         <h2 className='font-bold text-3xl'>{value.bookName}</h2>
                                                         <p>By : {value.author}</p>
-                                                        <div id='tags' className='flex gap-6'>
-                                                            {value.tags.map(tag => <p key={''} className="bg-[#cae4c6] font-semibold py-1 px-2 rounded-full text-[#60c960]">#{tag}</p>)}
 
-                                                            <div className='flex items-center gap-1'>
+                                                        <div className="flex flex-col md:flex-row gap-2"> 
+                                                            
+                                                        <div id='tags' className='flex  gap-6'>
+                                                {value.tags.map(tag => <p key={''} className="bg-[#f4fcf3] font-semibold py-1 px-2 rounded-full text-[#4dcb39]">#{tag}</p>)}                                                        
+                                                        </div>
+
+                                                        <div className='flex items-center gap-1'>
                                                                 <IoLocationOutline />
                                                                 <p>Year of Publishing: {value.yearOfPublishing} </p>
                                                             </div>
 
                                                         </div>
+                                                       
 
                                                         <div className='flex gap-6'>
                                                             <div className='flex gap-1 items-center'>
@@ -265,11 +270,11 @@ const ListedBooks = () => {
                                                         </div>
                                                         <div className="h-[1px] border-[1px] border-solid border-[#cfcdcdcc] w-full"></div>
 
-                                                        <div className='mt-2 flex gap-3' >
-                                                            <p className='rounded-full py-1 px-3 text-[#328EFF] font-semibold bg-[#96afce]'>Category: {value.category}</p>
-                                                            <p className='rounded-full py-1 px-3 text-[#FFAC33] font-semibold bg-[#e2ccab9f]'>Rating: {value.rating}</p>
+                                                        <div className='mt-2 flex flex-col md:flex-row gap-3' >
+                                                            <button className='rounded-full py-1 w-[max-content] px-3 text-[#4799ff] font-semibold bg-[#e0eeff] flex items-center'>Category: {value.category}</button>
+                                                            <button className='rounded-full py-1 w-[max-content] px-3 text-[#ffb549] font-semibold bg-[#fff3e0] flex items-center'>Rating: {value.rating}</button>
 
-                                                            <Link to={`/book/${value.bookId}`}> <button className='bg-[#23BE0A] text-white font-semibold rounded-full py-2 px-3'>view details</button></Link>
+                                                            <Link to={`/book/${value.bookId}`}> <button className='bg-[#23BE0A] text-white flex items-center font-semibold rounded-full py-2 px-3'>view details</button></Link>
 
                                                         </div>
 
@@ -315,7 +320,7 @@ const ListedBooks = () => {
                                                         <p>By : {value.author}</p>
                                                         <div id='tags' className='flex gap-6'>
 
-                                                            {value.tags.map(tag => <p key={''} className="bg-[#cae4c6] font-semibold py-1 px-2 rounded-full text-[#60c960]">#{tag}</p>)}
+                                                            {value.tags.map(tag => <p key={''} className="bg-[#f4fcf3] font-semibold py-1 px-2 rounded-full text-[#4dcb39]">#{tag}</p>)}
 
                                                             <div className='flex items-center gap-1'>
                                                                 <IoLocationOutline />
@@ -338,10 +343,10 @@ const ListedBooks = () => {
                                                         <div className="h-[1px] border-[1px] border-solid border-[#cfcdcdcc] w-full"></div>
 
                                                         <div className='mt-2 flex gap-3' >
-                                                            <p className='rounded-full py-1 px-3 text-[#328EFF] font-semibold bg-[#96afce]'>Category: {value.category}</p>
-                                                            <p className='rounded-full py-1 px-3 text-[#FFAC33] font-semibold bg-[#e2ccab9f]'>Rating: {value.rating}</p>
+                                                            <p className='rounded-full py-1 px-3 text-[#4799ff] flex items-center font-semibold bg-[#e0eeff]'>Category: {value.category}</p>
+                                                            <p className='rounded-full py-1 px-3 text-[#ffb549] flex items-center font-semibold bg-[#fff3e0]'>Rating: {value.rating}</p>
 
-                                                            <button className='bg-[#23BE0A] text-white font-semibold rounded-full py-2 px-3'>view details</button>
+                                                            <button className='bg-[#23BE0A] text-white font-semibold rounded-full py-2 px-3 flex items-center'>view details</button>
                                                         </div>
 
 
