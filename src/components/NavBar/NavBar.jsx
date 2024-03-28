@@ -17,7 +17,7 @@ const NavBar = () => {
     <li><NavLink to={'/newbooks'}>New Books</NavLink></li> 
       </ul> 
     </div>
-    <a className="btn btn-ghost font-semibold text-xl pl-0">Book Vibe</a>
+    <a className="btn btn-ghost font-semibold text-xl pl-0 pr-0 md:pr-2">Book Vibe</a>
   </div>
   <div className="navbar-center hidden lg:flex">
 
@@ -32,7 +32,7 @@ const NavBar = () => {
 
    
   </div>
-  <div className="navbar-end">
+  <div className="navbar-end md:gap-2">
     <a className="btn bg-[#23BE0A] text-white">Sign In</a>
     <a className=" btn bg-[#59C6D2] text-white">Sign Up</a>
   </div>

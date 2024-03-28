@@ -40,7 +40,8 @@ export default function PagesToRead() {
     console.log(bookItem);
       
   return (
-    <ResponsiveContainer width='90%' height={600}>
+     <section className='max-w-6xl mx-auto'>
+<ResponsiveContainer width='90%' height={600}>
 <BarChart
       // width={}
       // height={}
@@ -65,5 +66,7 @@ export default function PagesToRead() {
       
     </BarChart>
     </ResponsiveContainer>
+     </section>
+    
   );
 }

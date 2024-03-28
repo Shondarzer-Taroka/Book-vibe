@@ -68,7 +68,7 @@ const ListedBooks = () => {
         if (!wishlist.current.classList.contains('hidden')) {
             sortArray = [...wishPerBook]
             sortArray.sort((a, b) => {
-                return a.totalPages - b.totalPages
+                return b.totalPages - a.totalPages
             })
             setWishPerBook(sortArray)
         }
@@ -76,7 +76,7 @@ const ListedBooks = () => {
 
             sortArray = [...readperBook]
             sortArray.sort((a, b) => {
-                return a.totalPages - b.totalPages
+                return b.totalPages - a.totalPages
             })
             setreadPerBook(sortArray)
 
@@ -98,7 +98,7 @@ const ListedBooks = () => {
         if (!wishlist.current.classList.contains('hidden')) {
             sortArray = [...wishPerBook]
             sortArray.sort((a, b) => {
-                return a.yearOfPublishing - b.yearOfPublishing
+                return b.yearOfPublishing - a.yearOfPublishing
             })
             setWishPerBook(sortArray)
         }
@@ -106,7 +106,7 @@ const ListedBooks = () => {
 
             sortArray = [...readperBook]
             sortArray.sort((a, b) => {
-                return a.yearOfPublishing - b.yearOfPublishing
+                return b.yearOfPublishing - a.yearOfPublishing
             })
             setreadPerBook(sortArray)
 
@@ -123,7 +123,7 @@ const ListedBooks = () => {
         if (!wishlist.current.classList.contains('hidden')) {
             sortArray = [...wishPerBook]
             sortArray.sort((a, b) => {
-                return a.rating - b.rating
+                return b.rating - a.rating
             })
             setWishPerBook(sortArray)
         }
@@ -131,7 +131,7 @@ const ListedBooks = () => {
 
             sortArray = [...readperBook]
             sortArray.sort((a, b) => {
-                return a.rating - b.rating
+                return b.rating - a.rating
             })
             setreadPerBook(sortArray)
 
@@ -142,8 +142,6 @@ const ListedBooks = () => {
    
 
     function dropdownFunc(e) {
-        // console.log(e.target.nextElementSibling);
-        // ul.current.classList.remove('hidden')
         ul.current.classList.remove('hidden');
     }
 
@@ -153,7 +151,6 @@ const ListedBooks = () => {
 
     function button1() {
         console.log(btn1.current);
-        // btn1.current.classList.add('border-b-2')
         btn1.current.classList = 'border-t-2 border-l-2 border-r-2 px-4 py-2 w-[140px]'
         btn2.current.classList = 'border-b-2 border-l-0 border-r-0 px-4 py-2 w-[140px]'
         readSection.current.classList.remove('hidden')
@@ -188,25 +185,9 @@ const ListedBooks = () => {
                         <li onClick={yearHandled}><a>Publish of year</a></li>
                     </ul>
                 </details>
-
-                
-
-                {/* <form className="mt-8">
-                   
-                    <select name="cars" id="cars" className=" bg-green-400 p-4 font-semibold outline-none text-white border-none">
-                        <option className="bg-white text-black font-normal" value="sort by">sort by</option>
-                        <option onClick={ratingHandled} className="bg-white text-black font-normal" value="rating">rating</option>
-                        <option className="bg-white text-black font-normal" value="Number of pages">Number of pages</option>
-                        <option className="bg-white text-black font-normal" value="Publish of year">Publish of year</option>
-                    </select>
-                    
-                     
-                        </form> */}
                     </div>
 
-
                         {/* button */}
-
 
                         <div className='flex '>
 

@@ -51,54 +51,76 @@ const BookDetails = () => {
     return (
         <section className="max-w-6xl mx-auto">
 
-            <div className="flex flex-col md:flex-col lg:flex-row justify-between gap-4 ">
+            <div className="flex flex-col md:flex-col lg:flex-row justify-between gap-4 pl-2">
                 <div className="bg-gray-100 flex justify-center items-center rounded-2xl md:w-[40%]">
-                    <img className="py-12" src={image} alt="" />
+                    <img className="w-[50%]" src={image} alt="" />
                 </div>
 
 
                 <div id="content" className="space-y-3 w-[60%]">
                     <h3 className="text-2xl font-bold">{bookName}</h3>
-                    <p className="text-xl">By : {author}</p>
+                    <p className=" font-semibold text-[#606060]">By : {author}</p>
                     <div className="h-[1px] border-[1px] border-solid border-[#cfcdcdcc]"></div>
 
-                    <h6 className="text-xl">{category}</h6>
+                    <h6 className="font-semibold text-[#606060]">{category}</h6>
                     <div className="h-[1px] border-[1px] border-solid border-[#cfcdcdcc]"></div>
 
                     <div id="review" >
                         <span className="font-bold">Review:</span>
-                        <span>{review}</span>
+                        <span className="text-[#989898]">{review}</span>
                     </div>
 
                     <div>
                         <span className="font-bold">Tags:</span>
-                        {tags.map((value, index) => <span className="bg-[#f4fcf3] font-semibold p-2 rounded-full text-[#4dcb39] ml-2" key={index}>#{value}</span>)}
+                        <div className="flex gap-1 flex-wrap md:gap-2"> 
+                        {tags.map((value, index) => <span className="bg-[#f4fcf3] flex-wrap font-semibold p-2 rounded-full text-[#4dcb39] ml-2" key={index}>#{value}</span>)}
+                        </div> 
 
                     </div>
 
                     <div className="h-[1px] border-[1px] border-solid border-[#cfcdcdcc]"></div>
 
-                    <div id="pagesCount" className="space-y-2">
+                    {/* <div id="pagesCount" className="space-y-2">
                         <div className="flex gap-28">
-                            <p>Number of Pages:</p>
+                            <p className="text-[#989898]">Number of Pages:</p>
                             <p className="font-bold">{totalPages}</p>
                         </div>
 
                         <div className="flex gap-28">
-                            <p>Publisher:</p>
+                            <p className="text-[#989898]">Publisher:</p>
                             <p className="font-bold">{publisher}</p>
                         </div>
 
                         <div className="flex gap-28">
-                            <p>Year of Publishing:</p>
+                            <p className="text-[#989898]">Year of Publishing:</p>
                             <p className="font-bold">{yearOfPublishing}</p>
                         </div>
                         <div className="flex gap-28">
+                            <p className="text-[#989898]">Rating: </p>
+                            <p className="font-bold">{rating}</p>
+                        </div>
+                    </div> */}
+                                      <div id="pagesCount" className="space-y-2">
+                        <div className=" grid grid-cols-2 justify-items-start">
+                            <p className="">Number of Pages:</p>
+                            <p className="font-bold ">{totalPages}</p>
+                        </div>
+
+                        <div className=" grid grid-cols-2 justify-items-start">
+                            <p>Publisher:</p>
+                            <p className="font-bold">{publisher}</p>
+                        </div>
+
+                        <div className=" grid grid-cols-2 justify-items-start">
+                            <p>Year of Publishing:</p>
+                            <p className="font-bold">{yearOfPublishing}</p>
+                        </div>
+                        <div className=" grid grid-cols-2 justify-items-start">
                             <p>Rating: </p>
                             <p className="font-bold">{rating}</p>
                         </div>
                     </div>
-                    <div className="space-x-2">
+                    <div className="flex gap-2">
                         <button onClick={readHandled} className="border-2 py-3 px-4 font-bold rounded-xl">Read</button>
                         <button onClick={wishlistHandled} className="py-3 px-4 font-bold rounded-xl bg-[#50B1C9] text-white">Wishlist</button>
                     </div>
