@@ -1,9 +1,13 @@
+import { Link, useNavigate } from "react-router-dom";
 
 
 const Error = () => {
+    // let navigate= useNavigate()
     return (
-        <div className="flex items-center">
-            <h1 className="text-4xl font-bold">No Found Pages</h1>
+        <div className=" text-center">
+            <h1 className="text-4xl text-center font-bold mt-8">No Found Pages</h1>
+            <Link to={'/'}> <button className="btn btn-info mt-6">Go Back</button></Link>
+           
         </div>
     );
 };

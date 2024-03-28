@@ -1,10 +1,28 @@
+import { useState } from "react";
 import { FaStar, FaStarAndCrescent } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
 
 
 const BestSeller = () => {
     let bestSellerBooks=useLoaderData()
-    console.log(bestSellerBooks);
+    let [rating,setRating]=useState([])
+    // console.log(bestSellerBooks);
+   let ratingArray=[]
+    function ratingHandleFunc(ratingCode) {
+         
+        for (let i=1;i<=ratingCode;i++){
+          
+            
+            ratingArray.push(i)
+            // setRating(ratingArray)
+            // ratingArray=[] 
+        }
+       
+        console.log(ratingArray);
+    }
+
+
+  
    return (
      <>
      <h1 className="text-3xl font-bold text-center my-5">Best seller Books</h1>
@@ -26,9 +44,13 @@ const BestSeller = () => {
        
                  <div className="h-[1px] border-[1px] border-dashed border-[#cfcdcdcc]"></div>
               
-                  <div className="flex gap-1 items-center"> 
-                    <span>Ratings </span>
-                      <FaStar></FaStar>
+                  <div className="flex gap-2 items-center"> 
+                    <span className="font-semibold">Ratings: </span>
+                     {ratingHandleFunc( value.ratings,ratingArray=[])}
+                     <div className="flex text-yellow-400">
+                         {ratingArray.map((value,index)=> <FaStar></FaStar>)}
+                     </div>
+                     
                       ({value.ratings})
                    </div>
              

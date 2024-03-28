@@ -1,7 +1,7 @@
 
 // import { FaFileContract, FaPager } from 'react-icons/fa6';
 import { useEffect, useRef, useState } from "react";
-import { getLocalStorage, go, saveItem } from '../Utilities/utility';
+import { getLocalStorage, saveItem } from '../Utilities/utility';
 import { Link, useLoaderData } from 'react-router-dom';
 import { IoPeopleOutline } from "react-icons/io5";
 import { LuFileBarChart } from "react-icons/lu";
@@ -173,7 +173,7 @@ const ListedBooks = () => {
         <section id='main-section' className="max-w-6xl mx-auto">
 
             <div id="Book-title" className="text-center mb-[14%]">
-                <h2 className="font-bold text-2xl  mt-7 p-5 bg-gray-100 rounded-xl">Books</h2>
+                <h2 className="font-bold text-2xl  my-9 p-5 bg-gray-100 rounded-xl ">Books</h2>
                 <details onClick={dropdownFunc} className="dropdown">
                     <summary className="m-1 btn  bg-green-400">
                         <div className="flex items-center ">

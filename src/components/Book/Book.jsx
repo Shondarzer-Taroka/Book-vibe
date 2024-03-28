@@ -15,7 +15,7 @@ const Book = ({ book }) => {
 
 
                     <div id="text-content" className="space-y-3">
-                        <div id="tags-sect" className="flex gap-6">
+                        <div id="tags-sect" className="flex gap-6 flex-wrap md:flex-nowrap">
                             {tags.map((value,index)=> <p  className="bg-[#f4fcf3] font-semibold p-2 rounded-full text-[#4dcb39]" key={index}> {value}</p> )}
                             {/* <p className="bg-[#cae4c6] font-semibold p-2 rounded-full text-[#60c960]">Young Adult</p>
                             <p className="bg-[#cae4c6] font-semibold p-2 rounded-full text-[#5cc25c]">Identity</p> */}

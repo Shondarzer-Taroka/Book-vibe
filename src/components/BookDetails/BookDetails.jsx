@@ -52,7 +52,7 @@ const BookDetails = () => {
         <section className="max-w-6xl mx-auto">
 
             <div className="flex flex-col md:flex-col lg:flex-row justify-between gap-4 ">
-                <div className="bg-gray-100 flex justify-center items-center rounded-2xl w-[40%]">
+                <div className="bg-gray-100 flex justify-center items-center rounded-2xl md:w-[40%]">
                     <img className="py-12" src={image} alt="" />
                 </div>
 

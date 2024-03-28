@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { getLocalStorage } from '../Utilities/utility';
 
 const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
@@ -40,29 +40,30 @@ export default function PagesToRead() {
     console.log(bookItem);
       
   return (
-     <section className='max-w-6xl mx-auto'> 
-    <BarChart
-      width={1000}
-      height={300}
+    <ResponsiveContainer width='90%' height={600}>
+<BarChart
+      // width={}
+      // height={}
       data={bookItem}
       margin={{
         top: 20,
-        right: 30,
-        left: 20,
-        bottom: 5,
+        right:30,
+        left: 90,
+        bottom:200,
       }}
     >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="bookName" />
-      <YAxis />
+      <CartesianGrid strokeDasharray="3 3"/> 
+      <XAxis dataKey="bookName" angle={-45} textAnchor='end' />
+      <YAxis dataKey={'totalPages'}/>
+      {/* <YAxis dataKey='totalPages'> </YAxis> */}
       <Bar dataKey="totalPages" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
         {bookItem.map((entry, index) => (
           <Cell key={`cell-${index}`} fill={colors[index % 20]} />
         ))}
       </Bar>
-      <Tooltip></Tooltip>
+      <Tooltip viewBox= {''} ></Tooltip>
+      
     </BarChart>
-    </section>);
+    </ResponsiveContainer>
+  );
 }
-
-// App.demoUrl = 'https://codesandbox.io/s/bar-chart-with-customized-shape-dusth';

@@ -9,6 +9,7 @@ import ListedBooks from './components/ListedBooks/ListedBooks.jsx'
 import PagesToRead from './components/PagesToRead/PagesToRead.jsx'
 import Error from './components/Error/Error.jsx'
 import BestSeller from './components/BestSeller/BestSeller.jsx'
+import NewBooks from './components/NewBooks/NewBooks.jsx'
 
 let router=createBrowserRouter([
   {
@@ -41,6 +42,11 @@ let router=createBrowserRouter([
         path: '/best',
         element: <BestSeller></BestSeller>,
         loader: ()=> fetch('/medicalBooks.json')
+      },
+      {
+        path:'/newbooks',
+        element: <NewBooks></NewBooks>,
+        loader: ()=>fetch('newbooks.json')
       }
     ]
   }
