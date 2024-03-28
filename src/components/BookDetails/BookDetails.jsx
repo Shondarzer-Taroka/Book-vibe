@@ -39,7 +39,7 @@ const BookDetails = () => {
         wishsaveItem(idInt)
         toast('Book added to wishlist')
        }else{
-        toast.warning('You have already read this book')
+        toast.warning('You have already added this book to wishlist')
        }
     }
 

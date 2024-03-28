@@ -10,7 +10,7 @@ const Error = () => {
     }
     return (
         <div className=" text-center">
-            <h1 className="text-4xl text-center font-bold mt-8">No Found Pages</h1>
+            <h1 className="text-4xl text-center font-bold mt-8">Not Found Page</h1>
             <Link to={'/'}> <button className="btn btn-info mt-6">Go Home</button></Link>
             <button onClick={goBack} className="btn btn-info ml-2"> Go Back</button>
            

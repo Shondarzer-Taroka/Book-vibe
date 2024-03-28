@@ -17,7 +17,7 @@ const NavBar = () => {
     <li><NavLink to={'/newbooks'}>New Books</NavLink></li> 
       </ul> 
     </div>
-    <a className="btn btn-ghost font-semibold text-xl pl-0 pr-0 md:pr-2">Book Vibe</a>
+    <a className="btn btn-ghost font-semibold text-xl pl-0 pr-0 md:pr-2 md:font-bold md:text-3xl">Book Vibe</a>
   </div>
   <div className="navbar-center hidden lg:flex">
 
