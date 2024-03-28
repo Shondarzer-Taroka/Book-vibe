@@ -23,6 +23,7 @@ const NavBar = () => {
     <li><NavLink to={'/'}>Home</NavLink></li>
     <li><NavLink to={'/listed'}>Listed Books</NavLink></li>
     <li><NavLink to={'/pages'}>Pages to Read</NavLink></li> 
+    <li><NavLink to={'/best'}>Best Seller</NavLink></li> 
       </ul> 
     </div>
     <a className="btn btn-ghost text-xl">Book Vibe</a>
@@ -41,6 +42,7 @@ const NavBar = () => {
     <NavLink   to={'/'}>Home</NavLink>
     <NavLink  to={'/listed'}>Listed Books</NavLink>
     <NavLink  to={'/pages'}>Pages to Read</NavLink>
+    <NavLink to={'/best'}>Best Seller</NavLink>
      </div> 
 
    

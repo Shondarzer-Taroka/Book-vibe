@@ -1,0 +1,99 @@
+[
+    {
+        "image": "https://www.booktionary.com.bd/storage/app/book//image7274.jpg",
+        "label_sale": "PAPERBACK",
+        "product_name": "Creation Anatomy A Promise Of Excelence ( Volume 2 )",
+        "price": "535",
+        "status": "Available",
+        "ratings": 4
+    },
+    {
+        "image": "https://www.booktionary.com.bd/storage/app/book//image25405.jpg",
+        "label_sale": "PAPERBACK",
+        "product_name": "creation Anatomy a promise of excelence ( Volume 1 )",
+        "price": "525",
+        "status": "Available",
+        "ratings": 2
+    },
+    {
+        "image": "https://www.booktionary.com.bd/storage/app/book//image48575.jpg",
+        "label_sale": "PAPERBACK",
+        "product_name": "Oral Anatomy Histology & Embryology",
+        "price": "578",
+        "status": "Available",
+        "ratings": 4
+    },
+    {
+        "image": "https://www.booktionary.com.bd/storage/app/book//image28128.jpg",
+        "label_sale": "PAPERBACK",
+        "product_name": "abc of Medical Biochemistry",
+        "price": "420",
+        "status": "Available",
+        "ratings": 5
+    },
+    
+    {
+        "image": "https://www.booktionary.com.bd/storage/app/book//image8549.jpg",
+        "label_sale": "PAPERBACK",
+        "product_name": "Dental Anatomy for 1st Year BDS Students ( Color Atlas Included )",
+        "price": "440",
+        "status": "Available",
+        "ratings": 2
+    },
+    {
+        "image": "https://www.booktionary.com.bd/storage/app/book//image41995.jpg",
+        "label_sale": "PAPERBACK",
+        "product_name": "Essential of Dental Anatomy & Oral Histology",
+        "price": "288",
+        "status": "Available",
+        "ratings": 3
+    },
+    {
+        "image": "https://www.booktionary.com.bd/storage/app/book//image34598.jpg",
+        "label_sale": "PAPERBACK",
+        "product_name": "Ten Cate's Oral Histology ( Original )",
+        "price": "2280",
+        "status": "Available",
+        "ratings": 1
+    },
+    {
+        "image": "https://www.booktionary.com.bd/storage/app/book//image18624.jpg",
+        "label_sale": "PAPERBACK",
+        "product_name": "Comprehensive Guide to Physiology & Bio-Chemistry Reflex",
+        "price": "660",
+        "status": "Available",
+        "ratings": 5
+    },
+    {
+        "image": "https://www.booktionary.com.bd/storage/app/book//image73188.jpg",
+        "label_sale": "PAPERBACK",
+        "product_name": "Principle of General Anatomy",
+        "price": "165",
+        "status": "Available",
+        "ratings": 4
+    },
+    {
+        "image": "https://www.booktionary.com.bd/storage/app/book//image78290.jpg",
+        "label_sale": "PAPERBACK",
+        "product_name": "Australian Medical Council Question Bank 2020 Vol-1 - vol 4 ( High Quality )",
+        "price": "1200",
+        "status": "Available",
+        "ratings": 4
+    },
+    {
+        "image": "https://www.booktionary.com.bd/storage/app/book//image58316.jpg",
+        "label_sale": "ORIGINAL",
+        "product_name": "Atlas of Valvular Heart Disease",
+        "price": "2715",
+        "status": "Available",
+        "ratings": 3
+    },
+    {
+        "image": "https://www.booktionary.com.bd/storage/app/book//image35150.jpg",
+        "label_sale": "ORIGINAL",
+        "product_name": "Atlas of Ischemic Heart Disease",
+        "price": "2865",
+        "status": "Available",
+        "ratings": 3
+    }
+]
